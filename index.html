@@ -4,35 +4,24 @@
   <script type="application/javascript">
     function draw() {
       var canvas = document.getElementById('jensCanvas');
+      var ctx = canvas.getContext('2d');
 
       //canvas width and height variables
       var canvasWidth = 1925;
       var canvasHeight = 2500;
 
-      if (canvas.getContext) {
-        const ctx = canvas.getContext('2d');
+      function drawBuilding() {
+        //pick a pleasing building width and height
+        const buildingWidthRatios = Array(canvasWidth/2, canvasWidth/3*2, canvasWidth/5*3);
+        const buildingWidth = buildingWidthRatios[Math.floor(Math.random()*buildingWidthRatios.length)];
 
-        //draw black frame
+        const buildingHeightRatios = Array(buildingWidth, buildingWidth*3/2, buildingWidth*5/3, buildingWidth*2/3, buildingWidth*3/5);
+        const buildingHeight = buildingHeightRatios[Math.floor(Math.random()*buildingHeightRatios.length)];
+         
+        //draw building outline
         ctx.lineWidth = 20;
         ctx.strokeStyle = 'black';
-        ctx.strokeRect(40, 40, canvasWidth-80, canvasHeight-80);
-
-        //number of buildings
-        //start with 1 building
-        const numBuildings = 1;
-
-
-        //draw N number of buildings
-        //need to turn this into a loop for N number of buildings
-
-
-        //convert to PNG
-        window.location = canvas.toDataURL("image/png");
-      }
-    }
-    function drawBuilding() {
-        //draw building outline
-
+        ctx.strokeRect((canvasWidth-buildingWidth)/2, (canvasHeight-buildingHeight)/2, buildingWidth, buildingHeight);
 
         //draw door
 
@@ -47,6 +36,27 @@
 
 
         //fill in or color door
+      }
+
+      if (canvas.getContext) {
+
+        //draw black frame
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(40, 40, canvasWidth-80, canvasHeight-80);
+
+        //number of buildings
+        //start with 1 building
+        const numBuildings = 1;
+
+
+        //draw N number of buildings
+        //need to turn this into a loop for N number of buildings
+        drawBuilding();
+
+        //convert to PNG
+        window.location = canvas.toDataURL("image/png");
+      }
     }
   </script>
 </head>

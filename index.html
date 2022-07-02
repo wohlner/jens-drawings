@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <head>
-  <script type="text/javascript">
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById('jensCanvas');
+
+      //canvas width and height variables
+      var canvasWidth = 1925;
+      var canvasHeight = 2500;
+
+      if (canvas.getContext) {
+        const ctx = canvas.getContext('2d');
+
+        //draw black frame
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(40, 40, canvasWidth-80, canvasHeight-80);
+
+        //number of buildings
+        //start with 1 building
+        const numBuildings = 1;
+
+
+        //draw N number of buildings
+        //need to turn this into a loop for N number of buildings
+
+
+        //convert to PNG
+        window.location = canvas.toDataURL("image/png");
+      }
+    }
+    function drawBuilding() {
+        //draw building outline
+
+
+        //draw door
+
+        
+        //draw windows
+
+
+        //draw roof
+
+
+        //fill in or color building
+
+
+        //fill in or color door
+    }
   </script>
 </head>
-<body>
-
+<body onload="draw();">
+  <canvas id="jensCanvas" width="1925" height="2500" style="border: 1px solid #333;"></canvas>
 </body>
 </html>
